@@ -21,7 +21,7 @@ def regression_movies(r, alpha = 1.0):
     
     # Load data here from the pandas dataframe 
     df = pd.read_csv('./movies_clean.csv')
-
+    #df = pd.DataFrame(dff)
     regression_target = 'revenue'
     all_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average', 'Action', 'Adventure', 'Fantasy',
                       'Science Fiction', 'Crime', 'Drama', 'Thriller', 'Animation', 'Family', 'Western', 'Comedy',
@@ -29,7 +29,7 @@ def regression_movies(r, alpha = 1.0):
 
    
     # Extract here the data you will use to fit the models
-
+    X_train, X_test, y_train, y_test = train_test_split(df.all_covariates, df.regression_target) 
 
     # Now fit each of the models
     if r == 0:
@@ -44,8 +44,8 @@ def regression_movies(r, alpha = 1.0):
     else:
         print("r should be 0, 1, or 2")
         return 0
-
-    return r2_score(df.regression_target,all_covariates.reg)
+    x = X_train.reg
+    return r2_score(df.regression_target,x)
 # the corresponding r2score value
 
 
